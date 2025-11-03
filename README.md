@@ -22,7 +22,13 @@ cd teste-tecnico-tjjud
 docker compose up -d --build
 ```
 
-### 3. Configure o ambiente Laravel
+### 3. Instale as dependências do Composer
+
+```bash
+docker exec php-app composer install
+```
+
+### 4. Configure o ambiente Laravel
 
 ```bash
 docker exec php-app cp .env.example .env
@@ -30,14 +36,14 @@ docker exec php-app php artisan key:generate
 docker exec php-app php artisan storage:link
 ```
 
-### 4. Execute as migrações
+### 5. Execute as migrações
 
 ```bash
 docker exec php-app php artisan migrate
 docker exec php-app php artisan db:seed
 ```
 
-### 5. Configure permissões
+### 6. Configure permissões
 
 ```bash
 docker exec -u root php-app chown -R www-data:www-data storage bootstrap/cache
@@ -45,7 +51,7 @@ docker exec -u root php-app chmod -R 775 storage bootstrap/cache
 docker exec mariadb mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'user'@'%'; FLUSH PRIVILEGES;"
 ```
 
-### 6. Acesse a aplicação
+### 7. Acesse a aplicação
 
 **URL**: http://localhost:8080
 
@@ -90,6 +96,9 @@ Edite `docker-compose.yml` e altere `"8080:80"` para outra porta.
 docker compose down -v
 docker compose up -d --build
 ```
+
+**Erro "vendor not found" ou "Class not found":**
+Execute `docker exec php-app composer install` para instalar as dependências.
 
 ## 🛠️ Tecnologias
 
