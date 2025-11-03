@@ -16,8 +16,8 @@ class LivroRequest extends FormRequest
         return [
             'titulo' => 'required|string|max:40',
             'editora' => 'required|string|max:40',
-            'edicao' => 'nullable|integer|min:1',
-            'ano_publicacao' => 'nullable|digits:4',
+            'edicao' => 'required|integer|min:1',
+            'ano_publicacao' => 'required|digits:4',
             'valor' => 'required|numeric|min:0',
             'autores' => 'nullable|array',
             'autores.*' => 'integer|exists:autores,CodAu',

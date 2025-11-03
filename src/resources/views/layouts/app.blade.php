@@ -24,6 +24,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('livros.index') }}">Livros</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('autores.index') }}">Autores</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('assuntos.index') }}">Assuntos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('relatorio.index') }}">Relatório</a></li>
                 </ul>
             </div>
         </div>

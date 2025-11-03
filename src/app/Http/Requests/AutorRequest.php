@@ -21,8 +21,8 @@ class AutorRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nome.required' => 'O campo título é obrigatório.',
-            'nome.max' => 'O título pode ter no máximo 40 caracteres.',
+            'nome.required' => 'O campo nome é obrigatório.',
+            'nome.max' => 'O nome pode ter no máximo 40 caracteres.',
         ];
     }
 
