@@ -18,11 +18,8 @@ class RelatorioControllerTest extends TestCase
         parent::setUp();
         
         // Create view for testing (using structure.sql view)
-        $driver = DB::connection()->getDriverName();
-        
-        if ($driver === 'sqlite') {
-            DB::statement('DROP VIEW IF EXISTS vw_livros_autores_assuntos');
-        }
+        // This view matches the structure.sql view structure
+        DB::statement('DROP VIEW IF EXISTS vw_livros_autores_assuntos');
         
         DB::statement("
             CREATE VIEW vw_livros_autores_assuntos AS

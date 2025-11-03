@@ -10,17 +10,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $driver = DB::connection()->getDriverName();
-        
-        // Skip view creation for SQLite (used in tests)
-        // SQLite has different GROUP_CONCAT syntax and doesn't support SEPARATOR
-        if ($driver === 'sqlite') {
-            return;
-        }
-        
-        if ($driver === 'mysql' || $driver === 'mariadb') {
-            DB::statement('DROP VIEW IF EXISTS livros_relatorio_view');
-        }
+        DB::statement('DROP VIEW IF EXISTS livros_relatorio_view');
         
         DB::statement("
             CREATE VIEW livros_relatorio_view AS
