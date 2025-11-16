@@ -28,12 +28,14 @@
                     <form action="{{ route('autores.destroy', $autor) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-sm btn-danger" onclick="return confirm('Excluir este autor?')">Excluir</button>
+                        <button type="submit" class="btn btn-sm btn-danger" data-confirm data-confirm-message="Tem certeza que deseja excluir este autor?">Excluir</button>
                     </form>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
-{{ $autores->links() }}
+<div class="mt-4">
+    {{ $autores->links() }}
+</div>
 @endsection

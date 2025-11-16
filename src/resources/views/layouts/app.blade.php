@@ -34,6 +34,51 @@
         @yield('content')
     </main>
 
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Confirmar Ação</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmModalMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmModalButton">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            let formToSubmit = null;
+
+            document.querySelectorAll('[data-confirm]').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const message = this.getAttribute('data-confirm-message') || 'Tem certeza que deseja realizar esta ação?';
+                    formToSubmit = this.closest('form');
+                    
+                    document.getElementById('confirmModalMessage').textContent = message;
+                    
+                    confirmModal.show();
+                });
+            });
+
+            document.getElementById('confirmModalButton').addEventListener('click', function() {
+                if (formToSubmit) {
+                    formToSubmit.submit();
+                }
+                confirmModal.hide();
+                formToSubmit = null;
+            });
+        });
+    </script>
 </body>
 </html>

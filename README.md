@@ -25,6 +25,7 @@ docker compose up -d --build
 ### 3. Instale as dependências do Composer
 
 ```bash
+docker exec -it php-app bash
 docker exec php-app composer install
 ```
 
