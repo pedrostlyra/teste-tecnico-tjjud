@@ -13,7 +13,9 @@ class LivroController extends Controller
 {
     public function index()
     {
-        $livros = Livro::orderBy('Titulo')->paginate(10);
+        $livros = Livro::with(['autores', 'assuntos'])
+            ->orderBy('Titulo')
+            ->paginate(10);
         return view('livros.index', compact('livros'));
     }
 

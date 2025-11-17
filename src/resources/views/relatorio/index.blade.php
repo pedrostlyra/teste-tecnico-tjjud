@@ -9,12 +9,6 @@
         <a href="{{ route('relatorio.gerar') }}" class="btn btn-primary" target="_blank">
             Gerar PDF
         </a>
-        <a href="{{ route('relatorio.xml') }}" class="btn btn-success" target="_blank">
-            Exportar XML
-        </a>
-        <a href="{{ route('relatorio.json') }}" class="btn btn-info" target="_blank">
-            Exportar JSON
-        </a>
     </div>
 </div>
 
